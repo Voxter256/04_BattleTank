@@ -20,6 +20,8 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		float TrackMaxDrivingForce = 2.7 * 40000 * 1.5;
 	
-	
+private:
+	double LastInput = 0;
+	float thisFrameThrottleTotal = 0.f;
 	
 };
