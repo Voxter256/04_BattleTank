@@ -26,13 +26,14 @@ public:
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Setup")
 		UTankAimingComponent* TankAimingComponent = nullptr;
-	UPROPERTY(BlueprintReadOnly, Category = "Setup")
-		UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
 	ATank();
 
+	virtual void BeginPlay() override;
+
+	//TODO remove once firing is moved to aiming component
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 100000;
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
