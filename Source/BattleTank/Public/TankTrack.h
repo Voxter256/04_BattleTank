@@ -21,7 +21,16 @@ public:
 		float TrackMaxDrivingForce = 2.7 * 40000 * 1.5;
 	
 private:
-	double LastInput = 0;
-	float thisFrameThrottleTotal = 0.f;
+	UTankTrack();
+	virtual void BeginPlay() override;
+
+	void ApplySidewaysForce();
+	void DriveTank();
+
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	double ThisFrameTime = 0;
+	float CurrentThrottle = 0.f;
 	
 };
