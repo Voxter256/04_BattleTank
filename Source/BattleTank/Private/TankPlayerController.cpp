@@ -41,10 +41,10 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const {
 	
 	if (GetLookDirection(ScreenLocation, LookDirection)) {
 		// Line-trace along that direction to see what we hit (up to max range)
-		GetLookVectorHitLocation(LookDirection, HitLocation);
+		return GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
 	
-	return true;
+	return false;
 }
 
 // Deproject the screen position of the crosshair to a world direction
@@ -65,6 +65,4 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	}
 	HitLocation = FVector(0);
 	return false;
-	
-	return true;
 }

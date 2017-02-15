@@ -28,6 +28,7 @@ public:
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 	void AimAt(FVector);
+	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
@@ -48,8 +49,8 @@ private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 
-	void MoveBarrelTowards(FVector);
-	void MoveTurretTowards(FVector);
+	void MoveBarrelTowards();
+	void MoveTurretTowards();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 100000;
@@ -59,6 +60,6 @@ private:
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	double LastFireTime = 0;
-	FVector AimDirection = FVector(0.f);
+	FVector AimDirection;
 	
 };
