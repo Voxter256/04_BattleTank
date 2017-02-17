@@ -8,7 +8,7 @@
 //Enum for aiming state
 UENUM()
 enum class EFiringState : uint8 {
-	Reloading, Aiming, Locked
+	Reloading, Aiming, Locked, OutOfAmmo
 };
 
 
@@ -32,10 +32,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+		int GetAmmoRemaining() const;
 
 protected:
 	UPROPERTY(BlueprintReadonly, Category = "State")
 		EFiringState FiringState = EFiringState::Reloading;
+	
 
 private:
 	// Sets default values for this component's properties
@@ -56,9 +59,12 @@ private:
 		float LaunchSpeed = 100000;
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeSeconds = 4;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		int Ammo = 10;
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	
 	double LastFireTime = 0;
 	FVector AimDirection;
 	
