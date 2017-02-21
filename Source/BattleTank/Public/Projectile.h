@@ -23,7 +23,24 @@ public:
 	void LaunchProjectile(float);
 
 private:
-	UProjectileMovementComponent* ProjectileMovement = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		UProjectileMovementComponent* ProjectileMovement = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		UStaticMeshComponent* CollisionMesh = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		UParticleSystemComponent* LaunchBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		UParticleSystemComponent* ImpactBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		URadialForceComponent* ExplosionForce = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		float DestroyDelay = 10.f;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+	
+	void OnTimerExpire();
 	
 	
 };

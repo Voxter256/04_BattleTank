@@ -33,7 +33,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-		int GetAmmoRemaining() const;
+		int32 GetAmmoRemaining() const;
 
 protected:
 	UPROPERTY(BlueprintReadonly, Category = "State")
@@ -60,7 +60,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeSeconds = 4;
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-		int Ammo = 10;
+		int32 Ammo = 10;
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
